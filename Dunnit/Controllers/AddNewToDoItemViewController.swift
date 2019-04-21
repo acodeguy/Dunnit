@@ -17,6 +17,8 @@ class AddNewToDoItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupAccessibilityIdentifiers()
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -24,5 +26,9 @@ class AddNewToDoItemViewController: UIViewController {
         let dueDate: Date = dueDatePicker.date
         self.delegate?.saveItem(title: title, dueDate: dueDate)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setupAccessibilityIdentifiers() {
+        titleTextField.accessibilityIdentifier = "AddNewToDoItem_titleTextField"
     }
 }

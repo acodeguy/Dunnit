@@ -39,6 +39,13 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: tableView methods
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            toDoList.remove(at: indexPath.row)
+            toDoItemsTableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return toDoList.count
     }

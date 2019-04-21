@@ -13,19 +13,32 @@ class DunnitUITests: XCTestCase {
     var app: XCUIApplication!
     
     override func setUp() {
-        app = XCUIApplication()
-        
         continueAfterFailure = false
 
-        XCUIApplication().launch()
+        app = XCUIApplication()
+        app.launch()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        app = nil
     }
 
     func testCanAddANewToDoItemToList() {
         app.buttons["New Item"].tap()
-        app.textFields["Delete Facebook profile"].tap()
-        app.textFields["Delete Facebook profile"].typeText("Destroy Mark Z.")
+        app.textFields["AddNewToDoItem_titleTextField"].tap()
+        app.textFields["AddNewToDoItem_titleTextField"].typeText("Destroy Mark Z.")
         app.buttons["Save"].tap()
         XCTAssertTrue(app.tables.cells.staticTexts["Destroy Mark Z."].exists)
     }
 
+    func testDeleteToDoItemToList() {
+        app.buttons["New Item"].tap()
+        app.textFields["AddNewToDoItem_titleTextField"].tap()
+        app.textFields["AddNewToDoItem_titleTextField"].typeText("Delete Me")
+        app.buttons["Save"].tap()
+        app.tables.staticTexts["Delete Me"].swipeLeft()
+        app.tables.buttons["Delete"].tap()
+        XCTAssertFalse(app.tables.cells.staticTexts["Delete Me"].exists)
+    }
 }
