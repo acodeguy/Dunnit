@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		4905508C226BE02F00716BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905508B226BE02F00716BC7 /* AppDelegate.swift */; };
-		4905508E226BE02F00716BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905508D226BE02F00716BC7 /* ViewController.swift */; };
+		4905508E226BE02F00716BC7 /* DunnitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905508D226BE02F00716BC7 /* DunnitListViewController.swift */; };
 		49055091226BE02F00716BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4905508F226BE02F00716BC7 /* Main.storyboard */; };
 		49055093226BE03000716BC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49055092226BE03000716BC7 /* Assets.xcassets */; };
 		49055096226BE03000716BC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49055094226BE03000716BC7 /* LaunchScreen.storyboard */; };
 		490550A1226BE03000716BC7 /* DunnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550A0226BE03000716BC7 /* DunnitTests.swift */; };
 		490550AC226BE03000716BC7 /* DunnitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550AB226BE03000716BC7 /* DunnitUITests.swift */; };
+		490550BB226BE35F00716BC7 /* AddNewToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550BA226BE35F00716BC7 /* AddNewToDoItemViewController.swift */; };
+		490550C4226C843C00716BC7 /* SaveItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550C3226C843C00716BC7 /* SaveItemDelegate.swift */; };
+		490550C6226C873F00716BC7 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550C5226C873F00716BC7 /* ToDo.swift */; };
+		490550C8226C8F6F00716BC7 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550C7226C8F6F00716BC7 /* ToDoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		49055088226BE02F00716BC7 /* Dunnit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dunnit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4905508B226BE02F00716BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4905508D226BE02F00716BC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4905508D226BE02F00716BC7 /* DunnitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DunnitListViewController.swift; sourceTree = "<group>"; };
 		49055090226BE02F00716BC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49055092226BE03000716BC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49055095226BE03000716BC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		490550A7226BE03000716BC7 /* DunnitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DunnitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		490550AB226BE03000716BC7 /* DunnitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DunnitUITests.swift; sourceTree = "<group>"; };
 		490550AD226BE03000716BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		490550BA226BE35F00716BC7 /* AddNewToDoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewToDoItemViewController.swift; sourceTree = "<group>"; };
+		490550C3226C843C00716BC7 /* SaveItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveItemDelegate.swift; sourceTree = "<group>"; };
+		490550C5226C873F00716BC7 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		490550C7226C8F6F00716BC7 /* ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,13 @@
 		4905508A226BE02F00716BC7 /* Dunnit */ = {
 			isa = PBXGroup;
 			children = (
+				490550C2226C7EF500716BC7 /* Models */,
+				490550C1226C7EEC00716BC7 /* Views */,
+				490550B9226BE33400716BC7 /* Controllers */,
 				4905508B226BE02F00716BC7 /* AppDelegate.swift */,
-				4905508D226BE02F00716BC7 /* ViewController.swift */,
-				4905508F226BE02F00716BC7 /* Main.storyboard */,
 				49055092226BE03000716BC7 /* Assets.xcassets */,
-				49055094226BE03000716BC7 /* LaunchScreen.storyboard */,
 				49055097226BE03000716BC7 /* Info.plist */,
+				490550C3226C843C00716BC7 /* SaveItemDelegate.swift */,
 			);
 			path = Dunnit;
 			sourceTree = "<group>";
@@ -111,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				490550A0226BE03000716BC7 /* DunnitTests.swift */,
+				490550C7226C8F6F00716BC7 /* ToDoTests.swift */,
 				490550A2226BE03000716BC7 /* Info.plist */,
 			);
 			path = DunnitTests;
@@ -123,6 +133,32 @@
 				490550AD226BE03000716BC7 /* Info.plist */,
 			);
 			path = DunnitUITests;
+			sourceTree = "<group>";
+		};
+		490550B9226BE33400716BC7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4905508D226BE02F00716BC7 /* DunnitListViewController.swift */,
+				490550BA226BE35F00716BC7 /* AddNewToDoItemViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		490550C1226C7EEC00716BC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4905508F226BE02F00716BC7 /* Main.storyboard */,
+				49055094226BE03000716BC7 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		490550C2226C7EF500716BC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				490550C5226C873F00716BC7 /* ToDo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4905508E226BE02F00716BC7 /* ViewController.swift in Sources */,
+				4905508E226BE02F00716BC7 /* DunnitListViewController.swift in Sources */,
+				490550C6226C873F00716BC7 /* ToDo.swift in Sources */,
 				4905508C226BE02F00716BC7 /* AppDelegate.swift in Sources */,
+				490550C4226C843C00716BC7 /* SaveItemDelegate.swift in Sources */,
+				490550BB226BE35F00716BC7 /* AddNewToDoItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490550A1226BE03000716BC7 /* DunnitTests.swift in Sources */,
+				490550C8226C8F6F00716BC7 /* ToDoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +482,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.acodeguy.Dunnit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -460,7 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.acodeguy.Dunnit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
