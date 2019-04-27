@@ -20,7 +20,7 @@ class ToDo {
     }
     
     func complete() {
-        self.completed = true
+        self.completed = !self.completed
     }
     
     func isCompleted() -> Bool {
