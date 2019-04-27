@@ -14,6 +14,20 @@ Current features:
 Features to come:
 
 - Reminder alerts
+- Persisting of data (saving to a local/remote database)
+
+## Minimum Viable Product (MVP)
+For the MVP of this app, it will have the following features:
+
+- Add to-do items
+- Delete to-do items
+- Toggle items completion status
+
+### 27/4/19 MVP Reached!
+![mvp screenshot](readme-images/20190427-mvp-1.png)
+![mvp screenshot](readme-images/20190427-mvp-2.png)
+
+At this point, all items are kept in memory and not persisted. This is coming in a later version of this app.
 
 ## Approach
 
@@ -22,7 +36,6 @@ I've used TDD to write the code. I've used to MVC design pattern with an idea to
 ## Issues Faced
 
 - Testing for the UITableCell's accessory (checkmark) has proven impossible upto this point 
-
 
 ## Getting Started with this Code
 
