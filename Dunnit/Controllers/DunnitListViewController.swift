@@ -51,7 +51,7 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.toDoList[indexPath.row].complete()
+        self.toDoList[indexPath.row].toggleComplete()
         self.toDoItemsTableView.reloadData()
     }
     

@@ -19,7 +19,7 @@ class ToDo {
         self.dueDate = dueDate
     }
     
-    func complete() {
+    func toggleComplete() {
         self.completed = !self.completed
     }
     

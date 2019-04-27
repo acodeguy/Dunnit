@@ -1,7 +1,7 @@
 # Dunnit!
 ## Yeah, another iOS to-do list app.
 
-I created this as a learning exercise whilst getting to grips with Test-Driven Development with Swift in XCode. I wanted to create a simple app from the outside in, starting with feature tests then creating unit tests as and when required.
+I created this as a learning exercise whilst getting to grips with Test-Driven Development (TDD) with Swift in XCode. I wanted to create a simple app from the outside in, starting with feature tests then creating unit tests as and when required.
 
 ## Features
 
@@ -9,8 +9,22 @@ Current features:
 
 - Add to-do items
 - Delete to-do items
+- Toggle items completion status
 
-## Getting Started
+Features to come:
+
+- Reminder alerts
+
+## Approach
+
+I've used TDD to write the code. I've used to MVC design pattern with an idea to possibly move this over to MVVM once i get my head around it.
+
+## Issues Faced
+
+- Testing for the UITableCell's accessory (checkmark) has proven impossible upto this point 
+
+
+## Getting Started with this Code
 
 1. Clone this repo: ```git clone https://github.com/acodeguy/Dunnit.git```
 2. Open it in Xcode
@@ -26,4 +40,4 @@ At the moment, this project has no third-party depdencies. This may change if I 
 
 ## License
 
-Use it, abuse. But don't sell it.
+Use it, abuse it. But please don't sell it.
