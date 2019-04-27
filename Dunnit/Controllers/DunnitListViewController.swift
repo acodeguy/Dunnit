@@ -50,11 +50,17 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         return toDoList.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.toDoList[indexPath.row].complete()
+        self.toDoItemsTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as UITableViewCell
         let todo = toDoList[indexPath.row]
         cell.textLabel?.text = todo.title
         cell.detailTextLabel?.text = todo.dueDate?.description(with: Locale.init(identifier: "en_GB"))
+        cell.accessoryType = todo.isCompleted() ? .checkmark : .none
         return cell
     }
     

@@ -25,20 +25,35 @@ class DunnitUITests: XCTestCase {
     }
 
     func testCanAddANewToDoItemToList() {
-        app.buttons["New Item"].tap()
-        app.textFields["AddNewToDoItem_titleTextField"].tap()
-        app.textFields["AddNewToDoItem_titleTextField"].typeText("Destroy Mark Z.")
-        app.buttons["Save"].tap()
-        XCTAssertTrue(app.tables.cells.staticTexts["Destroy Mark Z."].exists)
+        let sampleItemTitle = "Take Zuck to Court"
+        self.addASampleToDoItem(title: sampleItemTitle)
+        XCTAssertTrue(app.tables.cells.staticTexts[sampleItemTitle].exists)
     }
 
     func testDeleteToDoItemToList() {
+        let sampleItemTitle = "Put Zuck in Prison"
+        self.addASampleToDoItem(title: sampleItemTitle)
+        app.tables.cells.staticTexts[sampleItemTitle].swipeLeft()
+        app.tables.cells.buttons["Delete"].tap()
+        XCTAssertFalse(app.tables.cells.staticTexts[sampleItemTitle].exists)
+    }
+    
+    func testCanMarkToDoItemAsComplete() {
+        let sampleItemTitle = "Send Zuck Some Anthrax"
+        addASampleToDoItem(title: sampleItemTitle)
+        self.completeToDoItem(withTitle: sampleItemTitle)
+    }
+    
+    // MARK: helper methods
+    
+    func addASampleToDoItem(title: String) {
         app.buttons["New Item"].tap()
         app.textFields["AddNewToDoItem_titleTextField"].tap()
-        app.textFields["AddNewToDoItem_titleTextField"].typeText("Delete Me")
+        app.textFields["AddNewToDoItem_titleTextField"].typeText(title)
         app.buttons["Save"].tap()
-        app.tables.staticTexts["Delete Me"].swipeLeft()
-        app.tables.buttons["Delete"].tap()
-        XCTAssertFalse(app.tables.cells.staticTexts["Delete Me"].exists)
+    }
+    
+    func completeToDoItem(withTitle: String) {
+        app.tables.cells.staticTexts[withTitle].tap()
     }
 }
