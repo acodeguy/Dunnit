@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SaveItemDelegate {
-    func saveItem(title: String, dueDate: Date)
+    func saveItem(title: String, dueDate: Date, alertEnabled: Bool)
 }

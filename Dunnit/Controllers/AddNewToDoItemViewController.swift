@@ -14,6 +14,7 @@ class AddNewToDoItemViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
+    @IBOutlet weak var alertEnabledSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,8 @@ class AddNewToDoItemViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         let title: String = titleTextField.text!
         let dueDate: Date = dueDatePicker.date
-        self.delegate?.saveItem(title: title, dueDate: dueDate)
+        let alertChoice = alertEnabledSwitch.isOn
+        self.delegate?.saveItem(title: title, dueDate: dueDate, alertEnabled: alertChoice)
         self.dismiss(animated: true, completion: nil)
     }
     

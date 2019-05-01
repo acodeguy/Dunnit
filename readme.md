@@ -16,6 +16,10 @@ Features to come:
 - Reminder alerts
 - Persisting of data (saving to a local/remote database)
 
+Enhancements to come:
+
+- UI will scale to work on all devices (currently only works on iPhone 8 Plus)
+
 ## Minimum Viable Product (MVP)
 For the MVP of this app, it will have the following features:
 

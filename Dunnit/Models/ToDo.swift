@@ -13,6 +13,7 @@ class ToDo {
     var title: String?
     var dueDate: Date?
     private var completed: Bool = false
+    private var reminderEnabled: Bool = false
     
     init(title: String, dueDate: Date = Date.init()) {
         self.title = title
