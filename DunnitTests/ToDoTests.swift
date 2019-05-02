@@ -12,7 +12,7 @@ import XCTest
 class ToDoTests: XCTestCase {
     
     func testToDoHasADefaultDueDateIfNotSupplied() {
-        let todo = ToDo(title: "Testing")
+        let todo = ToDo(context: nil)
         XCTAssertNotNil(todo.dueDate)
     }
 }

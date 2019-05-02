@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 import UserNotifications
 
 class DunnitListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SaveItemDelegate {
 
     private var toDoList: [ToDo] = []
+    let dunnitAppContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var toDoItemsTableView: UITableView!
     
@@ -21,9 +23,9 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         toDoItemsTableView.dataSource = self
         toDoItemsTableView.delegate = self
         
-        self.createDummyToDoItems()
+        toDoList = self.loadItems()!
         
-        self.requestNotificationsPermissions()
+        self.printDataFilePath()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,23 +35,51 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    // MARK: delete methods
+    // MARK: todo item methods
     
     func saveItem(title: String, dueDate: Date, alertEnabled: Bool = false) {
-        let item = ToDo(title: title, dueDate: dueDate)
-        if alertEnabled {
-            createAlert(title: "Dunnit yet?", body: title, reminderDate: dueDate)
+        let newToDoItem = ToDo(context: self.dunnitAppContext)
+        newToDoItem.title = title
+        newToDoItem.body = ""
+        newToDoItem.dueDate = dueDate
+        newToDoItem.alertEnabled = alertEnabled
+        
+        do {
+            try dunnitAppContext.save()
+            if alertEnabled {
+                createAlert(title: "Dunnit yet?", body: title, reminderDate: dueDate)
+            }
+            toDoList.append(newToDoItem)
+            toDoItemsTableView.reloadData()
+            self.requestNotificationsPermissions()
+        } catch {
+            print("Error saving todo items: \(error)")
         }
-        toDoList.append(item)
-        toDoItemsTableView.reloadData()
+    }
+    
+    func loadItems() -> [ToDo]? {
+        var todoItems: [ToDo]?
+        let toDoItemsRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
+        do {
+            todoItems = try dunnitAppContext.fetch(toDoItemsRequest)
+        } catch {
+            print("Error loading todo items: \(error)")
+        }
+        return todoItems
     }
     
     // MARK: tableView methods
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            toDoList.remove(at: indexPath.row)
-            toDoItemsTableView.deleteRows(at: [indexPath], with: .bottom)
+            dunnitAppContext.delete(self.toDoList[indexPath.row])
+            do {
+                try dunnitAppContext.save()
+                toDoList.remove(at: indexPath.row)
+                toDoItemsTableView.deleteRows(at: [indexPath], with: .bottom)
+            } catch {
+                print("Error deleting todo item: \(error)")
+            }
         }
     }
     
@@ -58,7 +88,13 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.toDoList[indexPath.row].toggleComplete()
+        self.toDoList[indexPath.row].completed = !self.toDoList[indexPath.row].completed
+        do {
+            try dunnitAppContext.save()
+            
+        } catch {
+            print("Error marking todo item as complete: \(error)")
+        }
         self.toDoItemsTableView.reloadData()
     }
     
@@ -67,13 +103,8 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         let todo = toDoList[indexPath.row]
         cell.textLabel?.text = todo.title
         cell.detailTextLabel?.text = todo.dueDate?.description(with: Locale.init(identifier: "en_GB"))
-        cell.accessoryType = todo.isCompleted() ? .checkmark : .none
+        cell.accessoryType = todo.completed ? .checkmark : .none
         return cell
-    }
-    
-    func createDummyToDoItems() {
-        let item1 = ToDo(title: "DDoS Attack on Facebook")
-        toDoList.append(item1)
     }
     
     func requestNotificationsPermissions() {
@@ -108,6 +139,13 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-
+    
+    // MARK: dev. methods, delete before relase!
+    // TODO: DELETE THESE METHODS!
+    func printDataFilePath() {
+        // print location to sqlite file to open for reading, useful when debugging
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(path)
+    }
 }
 

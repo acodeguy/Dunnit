@@ -15,8 +15,8 @@
 		490550AC226BE03000716BC7 /* DunnitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550AB226BE03000716BC7 /* DunnitUITests.swift */; };
 		490550BB226BE35F00716BC7 /* AddNewToDoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550BA226BE35F00716BC7 /* AddNewToDoItemViewController.swift */; };
 		490550C4226C843C00716BC7 /* SaveItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550C3226C843C00716BC7 /* SaveItemDelegate.swift */; };
-		490550C6226C873F00716BC7 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550C5226C873F00716BC7 /* ToDo.swift */; };
 		490550C8226C8F6F00716BC7 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490550C7226C8F6F00716BC7 /* ToDoTests.swift */; };
+		492E1689227B530300F95065 /* Dunnit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 492E1687227B530200F95065 /* Dunnit.xcdatamodeld */; };
 		49D079142274ADCD0041FBED /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 49D079132274ADCD0041FBED /* readme.md */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +52,8 @@
 		490550AD226BE03000716BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		490550BA226BE35F00716BC7 /* AddNewToDoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewToDoItemViewController.swift; sourceTree = "<group>"; };
 		490550C3226C843C00716BC7 /* SaveItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveItemDelegate.swift; sourceTree = "<group>"; };
-		490550C5226C873F00716BC7 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		490550C7226C8F6F00716BC7 /* ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTests.swift; sourceTree = "<group>"; };
+		492E1688227B530300F95065 /* ToDo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDo.xcdatamodel; sourceTree = "<group>"; };
 		49D079132274ADCD0041FBED /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,7 @@
 		490550C2226C7EF500716BC7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				490550C5226C873F00716BC7 /* ToDo.swift */,
+				492E1687227B530200F95065 /* Dunnit.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4905508E226BE02F00716BC7 /* DunnitListViewController.swift in Sources */,
-				490550C6226C873F00716BC7 /* ToDo.swift in Sources */,
+				492E1689227B530300F95065 /* Dunnit.xcdatamodeld in Sources */,
 				4905508C226BE02F00716BC7 /* AppDelegate.swift in Sources */,
 				490550C4226C843C00716BC7 /* SaveItemDelegate.swift in Sources */,
 				490550BB226BE35F00716BC7 /* AddNewToDoItemViewController.swift in Sources */,
@@ -626,6 +626,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		492E1687227B530200F95065 /* Dunnit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				492E1688227B530300F95065 /* ToDo.xcdatamodel */,
+			);
+			currentVersion = 492E1688227B530300F95065 /* ToDo.xcdatamodel */;
+			path = Dunnit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 49055080226BE02F00716BC7 /* Project object */;
 }

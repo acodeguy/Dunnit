@@ -10,15 +10,16 @@ Current features:
 - Add to-do items
 - Delete to-do items
 - Toggle items completion status
-
-Features to come:
-
 - Reminder alerts
 - Persisting of data (saving to a local/remote database)
 
+Features to come:
+
+- Multiple lists of todo items (work, home, school, etc)
+
 Enhancements to come:
 
-- UI will scale to work on all devices (currently only works on iPhone 8 Plus)
+- UI will scale to work on all devices (currently only scalesorks on iPhone 8 Plus until I set the constraints/pinning)
 
 ## Minimum Viable Product (MVP)
 For the MVP of this app, it will have the following features:
@@ -27,7 +28,10 @@ For the MVP of this app, it will have the following features:
 - Delete to-do items
 - Toggle items completion status
 
-### 27/4/19 MVP Reached!
+### 2/5/19: Data Persistence
+I've plumbed-in Core Data to store the data locally now, so todo items will persist over app closure and phone restarts.
+
+### 27/4/19: MVP Reached!
 ![mvp screenshot](readme-images/20190427-mvp-1.png)
 ![mvp screenshot](readme-images/20190427-mvp-2.png)
 
