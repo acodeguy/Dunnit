@@ -49,8 +49,8 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
             if alertEnabled {
                 createAlert(title: "Dunnit yet?", body: title, reminderDate: dueDate)
             }
-            toDoList.append(newToDoItem)
-            toDoItemsTableView.reloadData()
+            self.toDoList.append(newToDoItem)
+            self.toDoItemsTableView.reloadData()
             self.requestNotificationsPermissions()
         } catch {
             print("Error saving todo items: \(error)")
@@ -72,11 +72,11 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            dunnitAppContext.delete(self.toDoList[indexPath.row])
+           self.dunnitAppContext.delete(self.toDoList[indexPath.row])
             do {
-                try dunnitAppContext.save()
-                toDoList.remove(at: indexPath.row)
-                toDoItemsTableView.deleteRows(at: [indexPath], with: .bottom)
+                try self.dunnitAppContext.save()
+                self.toDoList.remove(at: indexPath.row)
+                self.toDoItemsTableView.deleteRows(at: [indexPath], with: .bottom)
             } catch {
                 print("Error deleting todo item: \(error)")
             }
@@ -90,7 +90,7 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.toDoList[indexPath.row].completed = !self.toDoList[indexPath.row].completed
         do {
-            try dunnitAppContext.save()
+            try self.dunnitAppContext.save()
             
         } catch {
             print("Error marking todo item as complete: \(error)")
