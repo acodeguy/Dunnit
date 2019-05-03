@@ -45,6 +45,12 @@ class DunnitUITests: XCTestCase {
         self.completeToDoItem(withTitle: sampleItemTitle)
     }
     
+    func testCanCancelNewToDoEntry() {
+        app.buttons["New Item"].tap()
+        app.buttons["Cancel"].tap()
+        XCTAssertTrue(app.buttons["New Item"].exists)
+    }
+    
     // MARK: helper methods
     
     func addASampleToDoItem(title: String) {

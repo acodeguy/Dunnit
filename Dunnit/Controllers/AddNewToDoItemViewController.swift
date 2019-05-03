@@ -33,4 +33,8 @@ class AddNewToDoItemViewController: UIViewController {
     func setupAccessibilityIdentifiers() {
         titleTextField.accessibilityIdentifier = "AddNewToDoItem_titleTextField"
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

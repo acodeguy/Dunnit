@@ -21,6 +21,10 @@ Enhancements to come:
 
 - UI will scale to work on all devices (currently only scalesorks on iPhone 8 Plus until I set the constraints/pinning)
 
+## Issues & Bugs
+
+Issues are being tracked on GitHub, over [here](https://github.com/acodeguy/Dunnit/issues).
+
 ## Minimum Viable Product (MVP)
 For the MVP of this app, it will have the following features:
 
@@ -39,7 +43,7 @@ At this point, all items are kept in memory and not persisted. This is coming in
 
 ## Approach
 
-I've used TDD to write the code. I've used to MVC design pattern with an idea to possibly move this over to MVVM once i get my head around it.
+I've used TDD to write the code. I've used to MVC design pattern with an idea to possibly move this over to MVVM once I get my head around it.
 
 ## Issues Faced
 
