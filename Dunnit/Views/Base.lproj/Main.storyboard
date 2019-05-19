@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HKO-zv-rjH">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,25 +56,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6h-8Y-Pma">
-                                <rect key="frame" x="20" y="65" width="374" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New Item"/>
-                                <connections>
-                                    <segue destination="dNA-GU-iD1" kind="show" identifier="newItemVC" id="v98-3Z-G8i"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="YKa-qx-3zH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="2Hu-bj-apf">
+                            <connections>
+                                <segue destination="dNA-GU-iD1" kind="presentation" identifier="newItemVC" id="D7p-c8-Qio"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addNewTodoItemBarButton" destination="2Hu-bj-apf" id="F8l-D5-pPL"/>
                         <outlet property="toDoItemsTableView" destination="KkZ-hJ-SX4" id="tRe-99-TIT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="147.55434782608697"/>
+            <point key="canvasLocation" x="1044.9275362318842" y="147.55434782608697"/>
         </scene>
         <!--Add New To Do Item View Controller-->
         <scene sceneID="vWk-Xt-SL2">
@@ -152,7 +152,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dG3-JT-8M1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1018.840579710145" y="147.55434782608697"/>
+            <point key="canvasLocation" x="1926.0869565217392" y="147.55434782608697"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6s1-h0-RM0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HKO-zv-rjH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ohX-o3-JuC">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wfb-0M-UU4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pEc-T2-FTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="147.55434782608697"/>
         </scene>
     </scenes>
 </document>

@@ -16,16 +16,20 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     let dunnitAppContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var toDoItemsTableView: UITableView!
+    @IBOutlet var addNewTodoItemBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Dunnit!"
         
         toDoItemsTableView.dataSource = self
         toDoItemsTableView.delegate = self
         
         toDoList = self.loadItems()!
         
-        self.printDataFilePath()
+        setupAccessibilityIdentifiers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -138,6 +142,10 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
                 // Handle any errors.
             }
         }
+    }
+    
+    func setupAccessibilityIdentifiers() {
+        addNewTodoItemBarButton.accessibilityIdentifier = "DunnitListViewController_addNewTodoItemBarButton"
     }
     
     // MARK: dev. methods, delete before relase!
