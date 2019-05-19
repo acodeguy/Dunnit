@@ -45,6 +45,17 @@ At this point, all items are kept in memory and not persisted. This is coming in
 
 I've used TDD to write the code. I've used to MVC design pattern with an idea to possibly move this over to MVVM once I get my head around it.
 
+I wanted to dive-in to getting to know as many features of the iOS SDK, and so far I've managed to encorporate the following into this project:
+
+### Building the app
+- Core Data
+- UserNofications (UNUserNotificationCenter)
+
+### Testing the app
+- XCTest
+- iOS simulator
+- an actual iPhone
+
 ## Issues Faced
 
 - Testing for the UITableCell's accessory (checkmark) has proven impossible upto this point 
