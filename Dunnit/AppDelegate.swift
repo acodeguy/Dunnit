@@ -14,8 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupUI()
+        
         return true
     }
 
@@ -51,6 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-
+    // MARK: custom methods
+    private func setupUI() {
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0.1, green: 0.5, blue: 0.9, alpha: 1)
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
 }
 
