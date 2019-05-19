@@ -35,6 +35,9 @@ For the MVP of this app, it will have the following features:
 ### 2/5/19: Data Persistence
 I've plumbed-in Core Data to store the data locally now, so todo items will persist over app closure and phone restarts.
 
+### 19/5/19: Add NavigationController, tests updated
+![mvp screenshot](readme-images/20190519-navbar.png)
+
 ### 27/4/19: MVP Reached!
 ![mvp screenshot](readme-images/20190427-mvp-1.png)
 ![mvp screenshot](readme-images/20190427-mvp-2.png)
