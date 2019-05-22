@@ -121,6 +121,7 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
+        content.sound = .default
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
