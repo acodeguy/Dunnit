@@ -19,22 +19,21 @@ class AddNewToDoItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveItem))
         self.setupAccessibilityIdentifiers()
     }
     
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    @objc func saveItem() {
         let title: String = titleTextField.text!
         let dueDate: Date = dueDatePicker.date
         let alertChoice = alertEnabledSwitch.isOn
-        self.delegate?.saveItem(title: title, dueDate: dueDate, alertEnabled: alertChoice)
-        self.dismiss(animated: true, completion: nil)
+        delegate?.saveItem(title: title, dueDate: dueDate, alertEnabled: alertChoice)
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     func setupAccessibilityIdentifiers() {
         titleTextField.accessibilityIdentifier = "AddNewToDoItem_titleTextField"
-    }
-    
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "AddNewToDoItem_SaveButton"
     }
 }

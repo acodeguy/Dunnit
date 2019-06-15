@@ -44,20 +44,14 @@ class DunnitUITests: XCTestCase {
         addASampleToDoItem(title: sampleItemTitle)
         self.completeToDoItem(withTitle: sampleItemTitle)
     }
-    
-    func testCanCancelNewToDoEntry() {
-        app.buttons["DunnitListViewController_addNewTodoItemBarButton"].tap()
-        app.buttons["Cancel"].tap()
-        XCTAssertTrue(app.buttons["DunnitListViewController_addNewTodoItemBarButton"].exists)
-    }
-    
+       
     // MARK: helper methods
     
     func addASampleToDoItem(title: String) {
         app.buttons["DunnitListViewController_addNewTodoItemBarButton"].tap()
         app.textFields["AddNewToDoItem_titleTextField"].tap()
         app.textFields["AddNewToDoItem_titleTextField"].typeText(title)
-        app.buttons["Save"].tap()
+        app.buttons["AddNewToDoItem_SaveButton"].tap()
     }
     
     func completeToDoItem(withTitle: String) {

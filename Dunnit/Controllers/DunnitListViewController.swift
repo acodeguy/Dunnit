@@ -10,12 +10,11 @@ import UIKit
 import CoreData
 import UserNotifications
 
-class DunnitListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SaveItemDelegate {
+class DunnitListViewController: UITableViewController, SaveItemDelegate {
 
     private var toDoList: [ToDo] = []
     let dunnitAppContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    @IBOutlet weak var toDoItemsTableView: UITableView!
     @IBOutlet var addNewTodoItemBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -24,19 +23,20 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Dunnit!"
         
-        toDoItemsTableView.dataSource = self
-        toDoItemsTableView.delegate = self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddToDoItemViewController))
         
         toDoList = self.loadItems()!
         
         setupAccessibilityIdentifiers()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "newItemVC" {
-            let newItemViewController = segue.destination as! AddNewToDoItemViewController
-            newItemViewController.delegate = self
+    @objc func showAddToDoItemViewController() {
+        guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNewToDoItemViewController") as? AddNewToDoItemViewController else {
+            return
         }
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     // MARK: todo item methods
@@ -54,7 +54,7 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
                 createAlert(title: "Dunnit yet?", body: title, reminderDate: dueDate)
             }
             self.toDoList.append(newToDoItem)
-            self.toDoItemsTableView.reloadData()
+            self.tableView.reloadData()
             self.requestNotificationsPermissions()
         } catch {
             print("Error saving todo items: \(error)")
@@ -74,24 +74,24 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     
     // MARK: tableView methods
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
            self.dunnitAppContext.delete(self.toDoList[indexPath.row])
             do {
                 try self.dunnitAppContext.save()
                 self.toDoList.remove(at: indexPath.row)
-                self.toDoItemsTableView.deleteRows(at: [indexPath], with: .bottom)
+                self.tableView.deleteRows(at: [indexPath], with: .bottom)
             } catch {
                 print("Error deleting todo item: \(error)")
             }
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return toDoList.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.toDoList[indexPath.row].completed = !self.toDoList[indexPath.row].completed
         do {
             try self.dunnitAppContext.save()
@@ -99,10 +99,10 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
         } catch {
             print("Error marking todo item as complete: \(error)")
         }
-        self.toDoItemsTableView.reloadData()
+        tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as UITableViewCell
         let todo = toDoList[indexPath.row]
         cell.textLabel?.text = todo.title
@@ -146,15 +146,7 @@ class DunnitListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func setupAccessibilityIdentifiers() {
-        addNewTodoItemBarButton.accessibilityIdentifier = "DunnitListViewController_addNewTodoItemBarButton"
-    }
-    
-    // MARK: dev. methods, delete before relase!
-    // TODO: DELETE THESE METHODS!
-    func printDataFilePath() {
-        // print location to sqlite file to open for reading, useful when debugging
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print(path)
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "DunnitListViewController_addNewTodoItemBarButton"
     }
 }
 
