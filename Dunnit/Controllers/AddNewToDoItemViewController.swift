@@ -10,7 +10,7 @@ import UIKit
 
 class AddNewToDoItemViewController: UIViewController {
     
-    var delegate: SaveItemDelegate?
+    let todoItemDataSource = ToDoItemDataSource()
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
@@ -29,7 +29,9 @@ class AddNewToDoItemViewController: UIViewController {
         let title: String = titleTextField.text!
         let dueDate: Date = dueDatePicker.date
         let alertChoice = alertEnabledSwitch.isOn
-        delegate?.saveItem(title: title, dueDate: dueDate, alertEnabled: alertChoice)
+        
+        todoItemDataSource.saveItem(title: title, dueDate: dueDate, alertEnabled: alertChoice)
+        
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
