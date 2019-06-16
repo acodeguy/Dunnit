@@ -20,6 +20,8 @@ class AddNewToDoItemViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveItem))
+        
+        title = "Add a New ToDo"
         self.setupAccessibilityIdentifiers()
     }
     

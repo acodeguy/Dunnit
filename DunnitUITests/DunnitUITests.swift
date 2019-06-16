@@ -26,13 +26,13 @@ class DunnitUITests: XCTestCase {
     }
 
     func testCanAddANewToDoItemToList() {
-        let sampleItemTitle = "Take Zuck to Court"
+        let sampleItemTitle = "Buy Milk"
         self.addASampleToDoItem(title: sampleItemTitle)
         XCTAssertTrue(app.tables.cells.staticTexts[sampleItemTitle].exists)
     }
 
-    func testDeleteToDoItemToList() {
-        let sampleItemTitle = "Put Zuck in Prison"
+    func testDeleteToDoItemFromList() {
+        let sampleItemTitle = "Buy apples"
         self.addASampleToDoItem(title: sampleItemTitle)
         app.tables.cells.staticTexts[sampleItemTitle].swipeLeft()
         app.tables.cells.buttons["Delete"].tap()
@@ -40,7 +40,7 @@ class DunnitUITests: XCTestCase {
     }
     
     func testCanMarkToDoItemAsComplete() {
-        let sampleItemTitle = "Send Zuck Some Anthrax"
+        let sampleItemTitle = "Buy shower gel"
         addASampleToDoItem(title: sampleItemTitle)
         self.completeToDoItem(withTitle: sampleItemTitle)
     }
